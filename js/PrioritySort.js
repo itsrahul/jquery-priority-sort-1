@@ -42,23 +42,28 @@ export default class PrioritySort
 
   sortByPriority()
   {
-    let count = this.$listElement.attr(this.initialCountAttribute);    
-    let items = Array.prototype
-      .slice.call( this.$listElement.children().hide() )
-      .sort( (a,b) => this.sortArrayFunction(a, b, "priority") )
-      .slice(0, count);
-
-    items.forEach(element => this.$listElement.append($(element).show()) );
+    for(let listItem of this.$listElement)
+    {
+      let count = $(listItem).attr(this.initialCountAttribute);    
+      let items = Array.prototype
+        .slice.call( $(listItem).children().hide() )
+        .sort( (a,b) => this.sortArrayFunction(a, b, "priority") )
+        .slice(0, count);
+  
+      items.forEach(element => $(listItem).append($(element).show()) );
+    }
   }
 
   sortDefault()
   {
-    let items = Array.prototype
-      .slice.call( this.$listElement.children().hide() )
-      .sort( (a,b) => this.sortArrayFunction(a, b, "default"))
+    for(let listItem of this.$listElement)
+    {
+      let items = Array.prototype
+        .slice.call( $(listItem).children().hide() )
+        .sort( (a,b) => this.sortArrayFunction(a, b, "default"))
 
-    items.forEach(element => this.$listElement.append($(element).show()) );
-
+      items.forEach(element => $(listItem).append($(element).show()) );
+    }
   }
 
   sortArrayFunction(a,b, type)

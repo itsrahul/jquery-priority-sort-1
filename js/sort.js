@@ -1,4 +1,4 @@
-import PrioritySort from "./PrioritySort.js"
+import PrioritySort from './PrioritySort.js';
 
 $(document).ready(function(){
   let options  = {
